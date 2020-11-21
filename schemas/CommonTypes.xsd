@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://mintic.gov.co/mintic/gel/xml/util/CommonTypes"
+	xmlns:util="http://mintic.gov.co/mintic/gel/xml/util/CommonTypes"
+	elementFormDefault="qualified">
+
+	<xsd:complexType name="TipoIdentificacionType">
+		<xsd:sequence>
+			<xsd:element name="codigoTipoIdentificacion">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="2" />
+						<xsd:pattern value="RE|TI|CC|CE|NIT|NITE"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="nombreTipoIdentificacion">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="4" />
+						<xsd:maxLength value="50" />
+						<xsd:pattern value="REGISTRO CIVIL|TARJETA DE IDENTIDAD|CÉDULA DE CIUDADANÍA|CÉDULA DE EXTRANJERÍA|NÚMERO DE IDENTIFICACIÓN TRIBUTARIA|NÚMERO DE IDENTIFICACIÓN EN EL EXTRANJERO"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IdentificacionType">
+		<xsd:sequence>
+			<xsd:element name="tipoIdentificacion" type="util:TipoIdentificacionType" />
+			<xsd:element name="numDocumento">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="GeneroType">
+		<xsd:sequence>
+			<xsd:element name="codGeneroPersona">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:pattern value="\d{1,1}"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="nomGeneroPersona">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="5" />
+						<xsd:maxLength value="6" />
+						<xsd:pattern value="HOMBRE|MUJER"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="UbicacionType">
+		<xsd:sequence>
+			<xsd:element name="ciudad">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="128" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="direccion">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="256" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="EstadoAfiliacionType">
+		<xsd:sequence>
+			<xsd:element name="codigoReportado">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:pattern value="\d{1,1}"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="valorEstado">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="6" />
+						<xsd:maxLength value="8" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>
