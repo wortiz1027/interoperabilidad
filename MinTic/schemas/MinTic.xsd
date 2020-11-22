@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://mintic.gov.co/mintic/gel/xml/core/tramite"
+	xmlns:core="http://mintic.gov.co/mintic/gel/xml/core/tramite"
+	xmlns:util="http://mintic.gov.co/mintic/gel/xml/util/CommonTypes"
+	elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://mintic.gov.co/mintic/gel/xml/util/CommonTypes" schemaLocation="CommonTypes.xsd"/>
+	
+	<xsd:complexType name="CiudadanoType">
+		<xsd:sequence>
+			<xsd:element name="identificacion" type="util:IdentificacionType" />
+			<xsd:element name="primerNombre">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			
+			<xsd:element name="segundoNombre">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="30" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			
+			<xsd:element name="primerApellido">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="30" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			
+			<xsd:element name="segundoApellido">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="30" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="generoPersona" type="util:GeneroType" />
+			<xsd:element name="ubicacion" type="util:UbicacionType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AfiliacionType">
+		<xsd:sequence>
+			<xsd:element name="nombreEntidadResponsable">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="4" />
+						<xsd:maxLength value="50" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="estAfiliacion" type="util:EstadoAfiliacionType" />
+		</xsd:sequence>
+	</xsd:complexType>
+		
+	<xsd:complexType name="ReporteType">
+		<xsd:sequence>
+			<xsd:element name="nombreEntidadResponsable">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="4" />
+						<xsd:maxLength value="50" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>			
+			<xsd:element name="reportado">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="2" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AntecedenteType">
+		<xsd:sequence>
+			<xsd:element name="sancion">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="4" />
+						<xsd:maxLength value="50" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>			
+			<xsd:element name="descripcion">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="500" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TramiteType">
+		<xsd:sequence>
+			<xsd:element name="numTramite">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="10" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="fecha"         type="xsd:date"/>
+			<xsd:element name="ciudadano"     type="core:CiudadanoType"/>
+			<xsd:element name="antecedentes"  type="core:AntecedenteType"/>
+			<xsd:element name="afilicaciones" type="core:AfiliacionType"/>
+			<xsd:element name="centrales"     type="core:ReporteType"/>
+			<xsd:element name="declaraRenta">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="2" />
+						<xsd:pattern value="SI|NO"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>
